@@ -1,0 +1,103 @@
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+.clock {
+    width: 350px;
+    height: 350px;
+    border: 3px solid black;
+    border-radius: 50%;
+    position: relative;
+    transform:rotate(-90deg);
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: 50% 100%;
+    transform: rotate(90deg);
+    z-index: 1;
+}
+
+.hour-hand {
+    width: 6px;
+    height: 60px;
+    background: black;
+    margin-left: -3px;
+}
+
+.minute-hand {
+    width: 4px;
+    height: 90px;
+    background: blue;
+    margin-left: -2px;
+}
+
+.second-hand {
+    width: 2px;
+    height: 120px;
+    background: red;
+    margin-left: -1px;
+}
+
+.number {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg) rotate(var(--rotation-offset)) translateX(150px) rotate(calc(-1 * var(--rotation-offset)));
+}
+
+
+/* Dynamically set the rotation angle for each number */
+.number[data-number="1"]  { --rotation-offset: -60deg; }
+.number[data-number="2"]  { --rotation-offset: -30deg; }
+.number[data-number="3"]  { --rotation-offset: -360deg; }
+.number[data-number="4"]  { --rotation-offset: -330deg; }
+.number[data-number="5"]  { --rotation-offset: -300deg; }
+.number[data-number="6"]  { --rotation-offset: -270deg; }
+.number[data-number="7"]  { --rotation-offset: -240deg; }
+.number[data-number="8"]  { --rotation-offset: -210deg; }
+.number[data-number="9"]  { --rotation-offset: -180deg; }
+.number[data-number="10"] { --rotation-offset: -150deg; }
+.number[data-number="11"] { --rotation-offset: -120deg; }
+.number[data-number="12"] { --rotation-offset: -90deg; }
+
+/* ... existing CSS ... 
+
+.number {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateX(150px) rotate(var(--rotation-offset));
+}
+
+.number[data-number="1"]  { --rotation-offset: -30deg; }
+.number[data-number="2"]  { --rotation-offset: -60deg; }
+.number[data-number="3"]  { --rotation-offset: -90deg; }
+.number[data-number="4"]  { --rotation-offset: -120deg; }
+.number[data-number="5"]  { --rotation-offset: -150deg; }
+.number[data-number="6"]  { --rotation-offset: -180deg; }
+.number[data-number="7"]  { --rotation-offset: -210deg; }
+.number[data-number="8"]  { --rotation-offset: -240deg; }
+.number[data-number="9"]  { --rotation-offset: -270deg; }
+.number[data-number="10"] { --rotation-offset: -300deg; }
+.number[data-number="11"] { --rotation-offset: -330deg; }
+.number[data-number="12"] { --rotation-offset: 0deg; } /* No rotation needed for the 12th number */
+*/
