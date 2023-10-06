@@ -1,0 +1,60 @@
+.divMain{
+    display: flex;
+}
+
+.divListApps{
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    height: 100vh;
+    background-color: #f1f1f1;
+    border-right: 1px solid #ccc;
+    color: rgb(86, 18, 155);
+}
+
+.divGameFrame{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100vh;
+    background-color: #f1f1f1;
+    color: brown;
+}
+
+.divGameFrameheader{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 5%;
+    background-color: #f1f1f1;
+    color: brown;
+    font-size: 25px;
+    font-weight: bold;
+    justify-content: center;
+    line-height: 25px;
+    align-items: center;
+}
+
+.divGameFrameBody{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+    background-color: #f1f1f1;
+    color: brown;
+}
+
+.divGameLink{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+    background-color: #f1f1f1;
+    color: rgb(86, 18, 155);
+    font-size: 20px;
+    font-variant: small-caps;
+}
+
+.active{
+    background-color: #ccc;
+}

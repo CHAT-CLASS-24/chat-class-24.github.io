@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Numbers Game",
+        "description": "Click the numbers in sequential order! How many can you find in time?",
+        "url": "Numbers/home.html",
+        "visible": true
+    },
+    {
+        "title": "Clock",
+        "description": "A simple javascript clock",
+        "url": "Clock/clock.html",
+        "visible": true
+    },
+    {
+        "title": "Game Title",
+        "description": "Game description",
+        "url": "url",
+        "visible": false
+    }
+]
