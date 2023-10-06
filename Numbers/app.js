@@ -5,7 +5,10 @@ let timerInterval;
 let currentRound = 1;
 let scores = [];
 let bonusRound = false;
-const roundTime = 20;
+const roundTime = 90;
+
+const centerX = window.innerWidth / 2;
+const centerY = window.innerHeight / 2;
 
 function createSlotsForNumbers(quad) {
     for (let i = 0; i < 25; i++) {
@@ -110,7 +113,7 @@ function startGameTimer() {
 } 
 
 function endGame() {
-    scores.push(score);
+    scores.push(score); 
 
     if (currentRound < 3) {
         currentRound++;
@@ -129,6 +132,102 @@ function endGame() {
             startRound();
         } else {
             currentRound = 1; // Resetting the round if no bonus round
+            const numbers = document.querySelectorAll('.slot');
+            //animate numbers individually every 100ms
+            let delay = 500;
+            numbers.forEach(num => {
+                let navtoCenterX = 0;
+                let navtoCenterY = 0;
+                
+                switch(num.parentElement.id){
+                    case 'q1':
+                        {
+                            navtoCenterX = 340;
+                            navtoCenterY = 340;
+                        }
+                        break;
+                    case 'q2':
+                        {
+                            navtoCenterX = -340;
+                            navtoCenterY = 340;
+                        }
+                        break;
+                    case 'q3':
+                        {
+                            navtoCenterX = 190;
+                            navtoCenterY = -190;
+                        }
+                        break;
+                    case 'q4':
+                        {
+                            navtoCenterX = -190;
+                            navtoCenterY = -190;
+                        }
+                        break;
+                    default:
+                        {
+                            navtoCenterX = 270;
+                            navtoCenterY = 270;
+                        }
+                        break;
+                }; 
+
+                setTimeout(() => {
+                    // const rect = document.querySelector('.timer').getBoundingClientRect();
+                    // const elementCenterX = rect.left + rect.width / 2;
+                    // const elementCenterY = rect.top + rect.height / 2;
+                    
+                  //  console.log(navtoCenterX, navtoCenterY, elementCenterX, elementCenterY)
+
+        
+                    // Apply the CSS variables
+                    num.style.setProperty('--toCenterX', `${navtoCenterX}px`);
+                    num.style.setProperty('--toCenterY', `${navtoCenterY}px`);
+        
+                    // Add the animation class
+                    num.classList.add('start-animation');
+
+
+
+                    // num.parentElement.classList.add('start-animation');
+                }, delay);
+                delay += 500;
+            });
+
+
+
+            // document.addEventListener('DOMContentLoaded', () => {
+            //     // ... Your existing code ...
+            
+            //     // Add an event listener to a button or some trigger element
+            //     const triggerElement = document.getElementById('triggerAnimationButton');
+            //     triggerElement.addEventListener('click', () => {
+            //         const elementsToAnimate = document.querySelectorAll('.yourElementClass'); // replace 'yourElementClass' with your desired class or selector
+                    
+                    
+            
+            //         elementsToAnimate.forEach(element => {
+            //             const rect = element.getBoundingClientRect();
+            //             const elementCenterX = rect.left + rect.width / 2;
+            //             const elementCenterY = rect.top + rect.height / 2;
+            
+            //             // Calculate the distance to translate to the center
+            //             const toCenterX = centerX - elementCenterX;
+            //             const toCenterY = centerY - elementCenterY;
+            
+            //             // Apply the CSS variables
+            //             element.style.setProperty('--toCenterX', `${toCenterX}px`);
+            //             element.style.setProperty('--toCenterY', `${toCenterY}px`);
+            
+            //             // Add the animation class
+            //             element.classList.add('start-animation');
+            //         });
+            //     });
+            // });
+            
+
+
+
         }
     }
 }
@@ -161,6 +260,7 @@ createSlotsForNumbers(document.getElementById('q4'));
 startGame();
 
 function startGame() {
+    let currentNumber = 1;
     numbers.forEach((number, index) => {
         let quad = document.getElementById(`q${(index % 4) + 1}`);
         let slots = quad.getElementsByClassName('slot');
@@ -179,8 +279,8 @@ function startGame() {
         }
         randomSlot.appendChild(numElem);
     });
+    document.querySelectorAll('.number').forEach(num => {
+        num.addEventListener('click', onClickNumber);
+        num.style.display = 'none';
+    });
 }
-document.querySelectorAll('.number').forEach(num => {
-    num.addEventListener('click', onClickNumber);
-    num.style.display = 'none';
-});
